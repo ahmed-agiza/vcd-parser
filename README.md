@@ -143,10 +143,10 @@ The optional configuration for the VCD parser
 
 **Properties**
 
-| Name              | Type                 | Description                                               |
-| ----------------- | -------------------- | --------------------------------------------------------- |
-| compress          | <code>boolean</code> | Compress the output wave by ignoring the unchanged values |
-| expandAmbigousBus | <code>boolean</code> | If the bus has some ambigous value (z                     | x), it gets expanded to represent the whole bus signal |
+| Name              | Type                 | Description                                                                                     |
+| ----------------- | -------------------- | ----------------------------------------------------------------------------------------------- |
+| compress          | <code>boolean</code> | Compress the output wave by ignoring the unchanged values                                       |
+| expandAmbigousBus | <code>boolean</code> | If the bus has some ambigous value (z or x), it gets expanded to represent the whole bus signal |
 
 <a name="VCDParser..ParsedData"></a>
 
