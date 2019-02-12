@@ -1,0 +1,9 @@
+{
+	"opts": {
+		"template": "templates/default",
+		"encoding": "utf8",
+		"destination": "./docs/",
+		"recurse": true
+	},
+	"exclude": ["node_modules", "test", "docs"]
+}
