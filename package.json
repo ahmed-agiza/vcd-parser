@@ -1,6 +1,6 @@
 {
 	"name": "vcd-parser",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Node.js VCD Parsing Tool",
 	"main": "lib/vcd-parser.js",
 	"scripts": {
@@ -34,18 +34,18 @@
 	"homepage": "https://github.com/ahmed-agiza/vcd-parser#readme",
 	"devDependencies": {
 		"chai": "^4.2.0",
-		"eslint": "^5.13.0",
+		"eslint": "^7",
 		"eslint-config-prettier": "^4.0.0",
-		"eslint-plugin-import": "^2.16.0",
+		"eslint-plugin-import": "^2.22.0",
 		"eslint-plugin-node": "^8.0.1",
 		"eslint-plugin-prettier": "^3.0.1",
 		"eslint-plugin-promise": "^4.0.1",
 		"eslint-plugin-standard": "^4.0.0",
-		"jsdoc": "^3.5.5",
-		"mocha": "^5.2.0",
+		"jsdoc": "^3.6.4",
+		"mocha": "^8",
 		"prettier": "^1.16.4"
 	},
 	"dependencies": {
-		"async": "^2.6.1"
+		"async": "^3"
 	}
 }

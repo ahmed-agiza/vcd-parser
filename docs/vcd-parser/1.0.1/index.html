@@ -26,7 +26,7 @@
     
 
 
-    <h3>vcd-parser 1.0.0</h3>
+    <h3>vcd-parser 1.0.1</h3>
 
 
 
@@ -43,119 +43,127 @@
 
 
     <section>
-        <article><h1>vcd-parser</h1><p>A Node.js parsing tool for Value Change Dump (VCD) files and generating a readable JSON document. It can be used with different hardware simulation tools such as <a href="http://iverilog.icarus.com">Icarus Iverilog</a>.</p>
-<h2>Installation</h2><p><code>npm install --save vcd-parser</code></p>
-<h2>Usage example</h2><pre class="prettyprint source lang-javascript"><code>const VCDParser = require('vcd-parser');
+        <article><h1>vcd-parser</h1>
+<p>A Node.js parsing tool for Value Change Dump (VCD) files and generating a readable JSON document. It can be used with different hardware simulation tools such as <a href="http://iverilog.icarus.com">Icarus Iverilog</a>.</p>
+<h2>Installation</h2>
+<p><code>npm install --save vcd-parser</code></p>
+<h2>Usage example</h2>
+<pre class="prettyprint source lang-javascript"><code>const VCDParser = require('vcd-parser');
 VCDParser.parse(
-    `
-    $date
-    Tue Feb 12 14:01:15 2019
-    $end
-    $version
-    Icarus Verilog
-    $end
-    $timescale
-    1ns
-    $end
-    $scope module test_tb $end
-    $var reg 1 ! clk $end
-    $var wire 1 &quot; rst $end
-    $upscope $end
-    $enddefinitions $end
-    #0
-    $dumpvars
-    0&quot;
-    0!
-    $end
-    #15
-    1&quot;
-    #20
-    1!
-    #40
-    0!
-    #60
-    1!
-    #80
-    0!
-    #100
-    1!
-    #115
+	`
+	$date
+	Tue Feb 12 14:01:15 2019
+	$end
+	$version
+	Icarus Verilog
+	$end
+	$timescale
+	1ns
+	$end
+	$scope module test_tb $end
+	$var reg 1 ! clk $end
+	$var wire 1 &quot; rst $end
+	$upscope $end
+	$enddefinitions $end
+	#0
+	$dumpvars
+	0&quot;
+	0!
+	$end
+	#15
+	1&quot;
+	#20
+	1!
+	#40
+	0!
+	#60
+	1!
+	#80
+	0!
+	#100
+	1!
+	#115
 `
 )
-    .then(parsedData => {
-        console.log(parsedData);
-        // {
-        //     &quot;date&quot;: &quot;Tue Feb 12 14:01:15 2019&quot;,
-        //     &quot;version&quot;: &quot;Icarus Verilog&quot;,
-        //     &quot;timescale&quot;: &quot;1ns&quot;,
-        //     &quot;endtime&quot;: &quot;115&quot;,
-        //     &quot;scale&quot;: &quot;1ns&quot;,
-        //     &quot;signal&quot;: [
-        //         {
-        //             &quot;type&quot;: &quot;reg&quot;,
-        //             &quot;size&quot;: 1,
-        //             &quot;refName&quot;: &quot;!&quot;,
-        //             &quot;signalName&quot;: &quot;clk&quot;,
-        //             &quot;module&quot;: &quot;test_tb&quot;,
-        //             &quot;name&quot;: &quot;test_tb.clk&quot;,
-        //             &quot;wave&quot;: [
-        //                 [
-        //                     &quot;0&quot;,
-        //                     &quot;0&quot;
-        //                 ],
-        //                 [
-        //                     &quot;20&quot;,
-        //                     &quot;1&quot;
-        //                 ],
-        //                 [
-        //                     &quot;40&quot;,
-        //                     &quot;0&quot;
-        //                 ],
-        //                 [
-        //                     &quot;60&quot;,
-        //                     &quot;1&quot;
-        //                 ],
-        //                 [
-        //                     &quot;80&quot;,
-        //                     &quot;0&quot;
-        //                 ],
-        //                 [
-        //                     &quot;100&quot;,
-        //                     &quot;1&quot;
-        //                 ]
-        //             ]
-        //         },
-        //         {
-        //             &quot;type&quot;: &quot;wire&quot;,
-        //             &quot;size&quot;: 1,
-        //             &quot;refName&quot;: &quot;\&quot;&quot;,
-        //             &quot;signalName&quot;: &quot;rst&quot;,
-        //             &quot;module&quot;: &quot;test_tb&quot;,
-        //             &quot;name&quot;: &quot;test_tb.rst&quot;,
-        //             &quot;wave&quot;: [
-        //                 [
-        //                     &quot;0&quot;,
-        //                     &quot;0&quot;
-        //                 ],
-        //                 [
-        //                     &quot;15&quot;,
-        //                     &quot;1&quot;
-        //                 ]
-        //             ]
-        //         }
-        //     ]
-        // }
-    })
-    .catch(err => {
-        console.error(err);
-    });</code></pre><h2>API Documentation</h2><ul>
-<li><a href="#VCDParser">VCDParser</a> :<ul>
+	.then(parsedData => {
+		console.log(parsedData);
+		// {
+		// 	&quot;date&quot;: &quot;Tue Feb 12 14:01:15 2019&quot;,
+		// 	&quot;version&quot;: &quot;Icarus Verilog&quot;,
+		// 	&quot;timescale&quot;: &quot;1ns&quot;,
+		// 	&quot;endtime&quot;: &quot;115&quot;,
+		// 	&quot;scale&quot;: &quot;1ns&quot;,
+		// 	&quot;signal&quot;: [
+		// 		{
+		// 			&quot;type&quot;: &quot;reg&quot;,
+		// 			&quot;size&quot;: 1,
+		// 			&quot;refName&quot;: &quot;!&quot;,
+		// 			&quot;signalName&quot;: &quot;clk&quot;,
+		// 			&quot;module&quot;: &quot;test_tb&quot;,
+		// 			&quot;name&quot;: &quot;test_tb.clk&quot;,
+		// 			&quot;wave&quot;: [
+		// 				[
+		// 					&quot;0&quot;,
+		// 					&quot;0&quot;
+		// 				],
+		// 				[
+		// 					&quot;20&quot;,
+		// 					&quot;1&quot;
+		// 				],
+		// 				[
+		// 					&quot;40&quot;,
+		// 					&quot;0&quot;
+		// 				],
+		// 				[
+		// 					&quot;60&quot;,
+		// 					&quot;1&quot;
+		// 				],
+		// 				[
+		// 					&quot;80&quot;,
+		// 					&quot;0&quot;
+		// 				],
+		// 				[
+		// 					&quot;100&quot;,
+		// 					&quot;1&quot;
+		// 				]
+		// 			]
+		// 		},
+		// 		{
+		// 			&quot;type&quot;: &quot;wire&quot;,
+		// 			&quot;size&quot;: 1,
+		// 			&quot;refName&quot;: &quot;\&quot;&quot;,
+		// 			&quot;signalName&quot;: &quot;rst&quot;,
+		// 			&quot;module&quot;: &quot;test_tb&quot;,
+		// 			&quot;name&quot;: &quot;test_tb.rst&quot;,
+		// 			&quot;wave&quot;: [
+		// 				[
+		// 					&quot;0&quot;,
+		// 					&quot;0&quot;
+		// 				],
+		// 				[
+		// 					&quot;15&quot;,
+		// 					&quot;1&quot;
+		// 				]
+		// 			]
+		// 		}
+		// 	]
+		// }
+	})
+	.catch(err => {
+		console.error(err);
+	});
+</code></pre>
+<h2>API Documentation</h2>
+<ul>
+<li><a href="#VCDParser">VCDParser</a> :
+<ul>
 <li><a href="#VCDParser..parse">.parse(content, [opts], [cb])</a> ⇒ <a href="#VCDParser..ParsedData"><code>Promise.&lt;ParsedData&gt;</code></a></li>
 </ul>
 </li>
 </ul>
 <p><a name="VCDParser..parse"></a></p>
-<h3>VCDParser.parse(content, [opts], [cb]) ⇒ <a href="#VCDParser..ParsedData"><code>Promise.&lt;ParsedData&gt;</code></a></h3><p>Parse VCD text content and generate a valid JSON representation.
+<h3>VCDParser.parse(content, [opts], [cb]) ⇒ <a href="#VCDParser..ParsedData"><code>Promise.&lt;ParsedData&gt;</code></a></h3>
+<p>Parse VCD text content and generate a valid JSON representation.
 The function returns a promise unless a callback is provided.</p>
 <p><strong>Returns</strong>: <a href="#VCDParser..ParsedData"><code>Promise.&lt;ParsedData&gt;</code></a> - that resolves with the parsed data</p>
 <table>
@@ -189,7 +197,8 @@ The function returns a promise unless a callback is provided.</p>
 </tbody>
 </table>
 <p><a name="VCDParser..Options"></a></p>
-<h3>VCDParser:Options : <code>Object</code></h3><p>The optional configuration for the VCD parser</p>
+<h3>VCDParser:Options : <code>Object</code></h3>
+<p>The optional configuration for the VCD parser</p>
 <p><strong>Properties</strong></p>
 <table>
 <thead>
@@ -213,7 +222,8 @@ The function returns a promise unless a callback is provided.</p>
 </tbody>
 </table>
 <p><a name="VCDParser..ParsedData"></a></p>
-<h3>VCDParser:ParsedData : <code>Object</code></h3><p>The parsed VCD object generated by the parser</p>
+<h3>VCDParser:ParsedData : <code>Object</code></h3>
+<p>The parsed VCD object generated by the parser</p>
 <p><strong>Properties</strong></p>
 <table>
 <thead>
@@ -247,7 +257,8 @@ The function returns a promise unless a callback is provided.</p>
 </tbody>
 </table>
 <p><a name="VCDParser..Signal"></a></p>
-<h3>VCDParser:Signal : <code>Object</code></h3><p>The object representing one signal data</p>
+<h3>VCDParser:Signal : <code>Object</code></h3>
+<p>The object representing one signal data</p>
 <p><strong>Properties</strong></p>
 <table>
 <thead>
@@ -291,7 +302,8 @@ The function returns a promise unless a callback is provided.</p>
 </tbody>
 </table>
 <p><a name="VCDParser..SignalValue"></a></p>
-<h3>VCDParser:SignalValue : <code>Array.&lt;number&gt;</code></h3><p>The value of a signal at a specific point of time, represnted as a tuple [time, value]</p>
+<h3>VCDParser:SignalValue : <code>Array.&lt;number&gt;</code></h3>
+<p>The value of a signal at a specific point of time, represnted as a tuple [time, value]</p>
 <p><strong>Properties</strong></p>
 <table>
 <thead>
@@ -315,7 +327,8 @@ The function returns a promise unless a callback is provided.</p>
 </tbody>
 </table>
 <p><a name="VCDParser..ParseCallback"></a></p>
-<h3>VCDParser:ParseCallback : <code>function</code></h3><p>The callback for the parsing function.</p>
+<h3>VCDParser:ParseCallback : <code>function</code></h3>
+<p>The callback for the parsing function.</p>
 <table>
 <thead>
 <tr>
@@ -353,7 +366,7 @@ The function returns a promise unless a callback is provided.</p>
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Tue Feb 12 2019 16:43:06 GMT+0200 (Eastern European Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sun Jul 05 2020 21:57:23 GMT+0200 (Eastern European Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>
